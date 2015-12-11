@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: vim
+  password: vim
+
+development:
+  <<: *default
+  database: IFitness_development
+
+test:
+  <<: *default
+  database: IFitness_test
