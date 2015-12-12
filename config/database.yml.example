@@ -2,8 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: vim
-  password: vim
+  username: root
+  password: root
 
 development:
   <<: *default

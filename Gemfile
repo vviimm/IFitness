@@ -4,6 +4,12 @@ gem 'rails', '4.2.3'
 gem 'pg'
 gem 'devise'
 
+# Assets
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'jquery-rails'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
@@ -12,15 +18,3 @@ group :development, :test do
   gem 'childprocess'
   gem 'pry-rails'
 end
-
-gem 'sass-rails'
-gem 'uglifier'
-gem 'coffee-rails'
-gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jbuilder'
-
-group :doc do
-  gem 'sdoc', require: false
-end
-
