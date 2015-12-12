@@ -1,6 +1,6 @@
 # Ifitness
 
-
+![Logo](https://raw.githubusercontent.com/vviimm/IFitness/master/lib/Imeges-readme/images.jpeg)
 
 ## Установка
 
