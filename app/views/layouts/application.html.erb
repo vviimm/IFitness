@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>IFitness</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IFitness</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 
-<%= yield %>
+    <%= javascript_include_tag 'https://js.stripe.com/v2/' %>
 
-</body>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= render 'layouts/navigation_bar' %>
+    <div class='container'>
+        <%= yield %>
+    </div>
+  </body>
 </html>
