@@ -1,0 +1,18 @@
+<div class="flash">
+  <% if notice.present? %>
+    <div role="alert" class="alert alert-info alert-dismissible">
+      <button aria-label="Close" data-dismiss="alert" class="close" type="button">
+        <span aria-hidden="true">×</span>
+      </button>
+      <%= notice %>
+    </div>
+  <% end %>
+  <% if alert.present? %>
+    <div role="alert" class="alert alert-danger alert-dismissible">
+      <button aria-label="Close" data-dismiss="alert" class="close" type="button">
+        <span aria-hidden="true">×</span>
+      </button>
+      <%= alert %>
+    </div>
+  <% end %>
+</div>
