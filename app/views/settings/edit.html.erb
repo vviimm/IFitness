@@ -1,0 +1,17 @@
+<h1>Добавь свои аватарку и имя</h1>
+
+
+<%= form_for current_user, url: setting_path, method: :patch do |f| %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
+
+  <p><%= f.submit %></p>
+<% end %>
+
+

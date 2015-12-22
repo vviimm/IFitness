@@ -4,6 +4,8 @@ gem 'rails', '4.2.3'
 gem 'pg'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.1'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Assets
 gem 'sass-rails'

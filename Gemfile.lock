@@ -46,6 +46,11 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     childprocess (0.5.8)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
@@ -110,6 +115,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.99)
+    mini_magick (4.3.6)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     nenv (0.2.0)
@@ -216,6 +222,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.3.1)
+  carrierwave
   childprocess
   coffee-rails
   devise
@@ -223,6 +230,7 @@ DEPENDENCIES
   guard-spork
   jquery-rails
   letter_opener
+  mini_magick
   pg
   pry-rails
   rails (= 4.2.3)
