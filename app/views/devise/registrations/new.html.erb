@@ -4,12 +4,22 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name, 'Имя' %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname, 'Фамилия' %><br />
+    <%= f.text_field :surname, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, 'Пароль' %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -17,12 +27,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, 'Подтверждение пароля' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Сохранить", class: 'btn btn-primary' %>
+    <%= f.submit "Создать аккаунт", class: 'btn btn-primary' %>
   </div>
 <% end %>
 

@@ -1,24 +1,33 @@
-<h1>Добавь свои аватарку и имя</h1>
+<h1>Настройка</h1>
 
 
 <%= form_for current_user, url: setting_path, method: :patch do |f| %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.file_field :avatar %>
-  </p>
+  <div class="field">
+    <%= f.label :name, 'Имя' %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
 
-  <p>
+  <div class="field">
+    <%= f.label :surname, 'Фамилия' %><br />
+    <%= f.text_field :surname, autofocus: true %>
+  </div>
+
+  <div>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div>
     <label>
       <%= f.check_box :remove_avatar %>
-      Remove avatar
+      <%= f.label :remove_avatar, 'Удалить аватарку' %>
     </label>
-  </p>
+  </div>
 
-  <p><%= f.submit %></p>
+  <div class="actions">
+    <%= f.submit "Обновить данные", class: 'btn btn-primary' %>
+  </div>
+
 <% end %>
 
 

@@ -5,7 +5,6 @@ class SettingsController < ApplicationController
   end
 
   def update
-
     if current_user.update(user_params)
       redirect_to root_path
     else
@@ -13,8 +12,8 @@ class SettingsController < ApplicationController
     end
   end
 
-    private
-      def user_params
-        params.require(:user).permit(:name, :avatar, :remove_avatar)
-      end
+  private
+    def user_params
+      params.require(:user).permit(:name, :surname, :avatar, :remove_avatar)
+    end
 end
