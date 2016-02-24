@@ -25,4 +25,6 @@ group :development, :test do
   gem 'childprocess'
   gem 'pry-rails'
   gem 'byebug'
+  gem 'dotenv-rails', require: 'dotenv/rails-now'
+  gem "recaptcha", require: 'recaptcha/rails'
 end
