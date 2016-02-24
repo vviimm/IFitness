@@ -1,42 +1,62 @@
-<h2>Регистрация</h2>
+<h3>Регистрация</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name,
+                      url: registration_path(resource_name),
+                     html: {class: "form-horizontal"}) do |f| %>
+
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :name, 'Имя' %><br />
-    <%= f.text_field :name, autofocus: true %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.text_field :name, autofocus: true,
+                                  class: "form-control",
+                            placeholder: "Имя" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :surname, 'Фамилия' %><br />
-    <%= f.text_field :surname, autofocus: true %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.text_field :surname, autofocus: true,
+                                     class: "form-control",
+                               placeholder: "Фамилия" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.email_field :email, autofocus: true,
+                                    class: "form-control",
+                              placeholder: "Email" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password, 'Пароль' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.password_field :password, autocomplete: "off",
+                                             class: "form-control",
+                                       placeholder: "Пароль" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, 'Подтверждение пароля' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.password_field :password_confirmation,
+                              autocomplete: "off",
+                                     class: "form-control",
+                               placeholder: "Подтверждение пароля" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= recaptcha_tags %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= recaptcha_tags %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Создать аккаунт", class: 'btn btn-primary' %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.submit "Создать аккаунт", class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
 

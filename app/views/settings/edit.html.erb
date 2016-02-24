@@ -1,33 +1,52 @@
-<h1>Настройка</h1>
+<h3>Настройки</h3>
 
+<%= form_for(current_user, url: setting_path,
+                        method: :patch,
+                          html: {class: "form-horizontal"}) do |f| %>
 
-<%= form_for current_user, url: setting_path, method: :patch do |f| %>
-
-  <div class="field">
-    <%= f.label :name, 'Имя' %><br />
-    <%= f.text_field :name, autofocus: true %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.text_field :name, autofocus: true,
+                                    class: "form-control",
+                              placeholder: "Имя" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :surname, 'Фамилия' %><br />
-    <%= f.text_field :surname, autofocus: true %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.text_field :surname, autofocus: true,
+                                    class: "form-control",
+                              placeholder: "Фамилия" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.file_field :avatar %>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.email_field :email, autofocus: true,
+                                    class: "form-control",
+                              placeholder: "Email" %>
+    </div>
   </div>
 
-  <div>
-    <label>
-      <%= f.check_box :remove_avatar %>
-      <%= f.label :remove_avatar, 'Удалить аватарку' %>
-    </label>
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.file_field :avatar %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Обновить данные", class: 'btn btn-primary' %>
+  <div class="form-group">
+    <div class="col-sm-10 sign_in_remember_me">
+      <div class="checkbox">
+        <%= f.check_box :remove_avatar %>
+        <%= f.label :remove_avatar, 'Удалить аватарку' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-10">
+      <%= f.submit "Обновить данные", class: 'btn btn-primary' %>
+    </div>
   </div>
 
 <% end %>
-
-
