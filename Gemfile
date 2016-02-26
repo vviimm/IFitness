@@ -6,12 +6,20 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem "recaptcha", require: 'recaptcha/rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
+gem 'omniauth-instagram'
 
 # Assets
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
+
+gem 'rest_client'
 
 group :development do
   gem "letter_opener"
@@ -25,6 +33,4 @@ group :development, :test do
   gem 'childprocess'
   gem 'pry-rails'
   gem 'byebug'
-  gem 'dotenv-rails', require: 'dotenv/rails-now'
-  gem "recaptcha", require: 'recaptcha/rails'
 end

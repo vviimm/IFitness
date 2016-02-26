@@ -1,4 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
+  prepend_before_filter :check_captcha, only: [:create]
+
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
@@ -8,19 +11,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    if !verify_recaptcha
-      flash.delete :recaptcha_error
-      build_resource(sign_up_params)
-      resource.valid?
-      resource.errors.add(:base, "There was an error with the recaptcha code below. Please re-enter the code.")
-      clean_up_passwords(resource)
-      respond_with_navigational(resource) { render_with_scope :new }
-    else
-      flash.delete :recaptcha_error
-      super
-    end
-  end
+  # def create
+  #   if !verify_recaptcha
+  #     flash.delete :recaptcha_error
+  #     build_resource(sign_up_params)
+  #     resource.valid?
+  #     resource.errors.add(:base, "There was an error with the recaptcha code below. Please re-enter the code.")
+  #     clean_up_passwords(resource)
+  #     respond_with_navigational(resource) { render_with_scope :new }
+  #   else
+  #     flash.delete :recaptcha_error
+  #     super
+  #   end
+  # end
 
   # GET /resource/edit
   # def edit
@@ -46,7 +49,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  private
+    def check_captcha
+      if verify_recaptcha
+        true
+      else
+        self.resource = resource_class.new sign_in_params
+        respond_with_navigational(resource) { render :new }
+      end
+    end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
