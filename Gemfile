@@ -19,7 +19,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 
-gem 'rest_client'
+gem 'rest-client'
 gem 'localtunnel'
 
 group :development do

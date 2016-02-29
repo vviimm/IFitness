@@ -19,4 +19,4 @@
 config/database.yml
 .env
 
-config/initializers/devise.rb
+public/uploads/*
