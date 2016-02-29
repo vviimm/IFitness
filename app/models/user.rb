@@ -8,25 +8,91 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable,
          :confirmable,
-         :omniauthable, omniauth_providers: [:facebook, :vkontakte]
+         :omniauthable, omniauth_providers: [:facebook, :vkontakte, :instagram]
 
   mount_uploader :avatar, AvatarUploader
 
+
+  def email_required?
+    false if provider.present?
+  end
+  # def self.from_omniauth_facebook(auth)
+  #   user = User.where(provider: auth.provider, uid: auth.uid).first
+
+  #   if user.blank?
+  #     pass = Devise.friendly_token[0,20]
+
+  #     user = User.create(provider: auth.provider,
+  #                             uid: auth.uid,
+  #                           email: auth.info.email,
+  #                        password: pass,
+  #           password_confirmation: pass,
+  #                            name: auth.info.name.split(' ')[0],
+  #                         surname: auth.info.name.split(' ')[1])
+  #   end
+
+  #   user
+  # end
+
+  # def self.from_omniauth_vk(auth)
+  #   user = User.where(provider: auth.provider, uid: auth.uid).first
+
+  #   if user.blank?
+  #     pass = Devise.friendly_token[0,20]
+
+  #     user = User.create(provider: auth.provider,
+  #                             uid: auth.uid,
+  #                           email: auth.extra.raw_info.screen_name+"@vk.com",
+  #                        password: pass,
+  #           password_confirmation: pass,
+  #                            name: auth.info.name.split(' ')[0],
+  #                         surname: auth.info.name.split(' ')[1])
+  #   end
+
+  #   if user.persisted?
+  #     user.remote_avatar_url = auth.info.image
+  #     user.save
+  #   end
+
+  #   user
+  # end
+
   def self.from_omniauth(auth)
-    if user = User.where(provider: auth.provider, uid: auth.uid).first
-      user
-    else
+
+    Rails.logger.info "auth -------------- #{auth.inspect.to_yaml}"
+
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+
+    if user.blank?
       pass = Devise.friendly_token[0,20]
 
-      user = User.create!(provider: auth.provider,
-                               uid: auth.uid,
-                             email: auth.info.email,
-                          password: pass,
-             password_confirmation: pass,
-                              name: auth.info.name.split(' ')[0],
-                           surname: auth.info.name.split(' ')[1])
+      user = User.create(provider: auth.provider,
+                              uid: auth.uid,
+                         password: pass,
+            password_confirmation: pass,
+                             name: auth.info.name.split(' ')[0],
+                          surname: auth.info.name.split(' ')[1],
+                            email: auth.info.name.split(' ')[0]+"@#{auth.provider}.com")
     end
+
+    # if user.provider == "facebook"
+    #   user.update_attributes(email: auth.info.email)
+    # elsif user.provider == "vkontakte"
+    #   user.update_attributes(email: auth.extra.raw_info.screen_name+"@vk.com")
+    # else
+    #   user.update_attributes(email: auth.extra.raw_info.username+"@instagram.com")
+    # end
+
+    if user.persisted? && user.provider != "facebook"
+      user.remote_avatar_url = auth.info.image
+      user.save
+    end
+
+    user
   end
+
+end
+
 
 
   # def self.from_omniauth(auth)
@@ -77,5 +143,3 @@ class User < ActiveRecord::Base
   #     save
   #   end
   # end
-
-end

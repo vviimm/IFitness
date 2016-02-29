@@ -3,7 +3,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   def facebook
+    result = Users::SaveSocialUsers.new(request.env["omniauth.auth"])
+    if result.success?
+      sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+      set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
+    else
+      flash[:notice] = "authentication error"
+      redirect_to root_path
+    end
+  end
 
+  def vkontakte
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
@@ -14,10 +24,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  def vkontakte
-  end
-
   def instagram
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+      set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
+    else
+      flash[:notice] = "authentication error"
+      redirect_to root_path
+    end
   end
 
   # You should also create an action method in this controller like this:

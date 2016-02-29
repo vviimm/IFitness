@@ -20,6 +20,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 
 gem 'rest_client'
+gem 'localtunnel'
 
 group :development do
   gem "letter_opener"
