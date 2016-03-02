@@ -12,6 +12,10 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", user_omniauth_authorize_path(provider) %><br />
+    <%- if "#{provider}" == "vkontakte" %>
+      <%= link_to " #{OmniAuth::Utils.camelize(provider)}",user_omniauth_authorize_path(provider), class: "fa fa-vk" %>&nbsp
+    <%- else %>
+      <%= link_to " #{OmniAuth::Utils.camelize(provider)}",user_omniauth_authorize_path(provider), class: "fa fa-#{provider}" %>&nbsp
+    <% end -%>
   <% end -%>
 <% end -%>
